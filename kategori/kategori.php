@@ -37,6 +37,6 @@ $merek = query("SELECT * FROM merek");
 			<?php $i++; ?>
 			<?php endforeach; ?>
 		</table>
-		<a href="../index.php">kembali ke halaman admin!</a>
+		<a href="../halaman_admin.php">kembali ke halaman admin!</a>
 </body>
 </html>	
