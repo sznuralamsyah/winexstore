@@ -36,7 +36,7 @@ if (isset($_POST["submit"])) {
 		<ul>
 			<li>
 				<label for="merek">kategori : </label>
-				<input type="text" name="merek" id="merek">
+				<input type="text" name="merek" id="merek" autocomplete="off">
 			</li>
 			<li>
 				<button type="submit" name="submit">Tambah kategori Produk!</button>

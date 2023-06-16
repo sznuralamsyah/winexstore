@@ -33,7 +33,7 @@ $merek = query("SELECT * FROM merek");
 <body>
 	<h1>Tambah Data Produk</h1>
 
-	<form action="" method="post">
+	<form action="" method="post" enctype="multipart/form-data">
 		<ul>
 			<li>
 				<label for="merek">merek : </label>
@@ -50,7 +50,7 @@ $merek = query("SELECT * FROM merek");
 			</li>
 			<li>
 				<label for="gambar">gambar : </label>
-				<input type="text" name="gambar" id="gambar" required autocomplete="off">
+				<input type="file" name="gambar" id="gambar" accept="image/*">
 			</li>
 			<li>
 				<label for="kondisi">kondisi : </label>

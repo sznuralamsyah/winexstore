@@ -40,8 +40,9 @@ $merek= query("SELECT * FROM merek");
 <body>
 	<h1>Ubah Data Produk</h1>
 
-	<form action="" method="post">
-		<ul> <input type="hidden" name="id" value="<?php echo $kmr["id"] ?>">
+	<form action="" method="post" enctype="multipart/form-data">
+		<ul> <input type="hidden" name="id" value="<?php echo $kmr["id"]; ?>">
+			 <input type="hidden" name="gambarLama" value="<?php echo $kmr["gambar"]; ?>">
 			<li>
 				<label for="merek">merek : </label>
 				<select name="merek_id" id="merek">
@@ -55,8 +56,9 @@ $merek= query("SELECT * FROM merek");
 				<input type="text" name="tipe" id="tipe" required autocomplete="off" value="<?php echo $kmr["tipe"] ?>">
 			</li>
 			<li>
-				<label for="gambar">gambar : </label>
-				<input type="text" name="gambar" id="gambar" required autocomplete="off" value="<?php echo $kmr["gambar"] ?>">
+				<label for="gambar">gambar : </label> <br>
+				<img src="../<?php echo $kmr["gambar"] ?>" alt="gambar kamera"> <br>
+				<input type="file" name="gambar" id="gambar">
 			</li>
 			<li>
 				<label for="kondisi">kondisi : </label>

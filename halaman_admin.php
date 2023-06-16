@@ -15,8 +15,8 @@ if (!isset($_SESSION["login"])) {
 </head>
 <body>
 	<h1>halaman admin</h1>
-		<p class="nama-admin">halo <?php echo $_SESSION["user"]["username"]; ?></p>
-		<a class="logout-right"href="logout.php">logout!</a>
+		<p>halo <?php echo $_SESSION["user"]["username"]; ?></p>
+		<a href="logout.php">logout!</a>
 	<form action="">
 		<ul>
 			<li><a href="produk/daftar_produk.php">daftar produk</a></li>

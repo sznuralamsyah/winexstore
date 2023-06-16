@@ -30,5 +30,6 @@ $kamera = query("SELECT kamera.*, merek.merek FROM kamera JOIN merek ON merek.id
 		<li>kondisi : <?php echo $kamera["kondisi"]; ?></li>
 		<li>deskripsi produk : <br><?php echo nl2br($kamera["deskripsi"]); ?></li>
 	</ul>
+	<a href="link wa">beli via whatsapp!</a>
 </body>
 </html>

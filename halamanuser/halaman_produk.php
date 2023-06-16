@@ -1,6 +1,6 @@
 <?php
-require ('../funcions.php');
 
+require ('../funcions.php');
 
 //ambil data dari tabel kamera /query data kamera
 $kamera = query("SELECT kamera.*, merek.merek FROM kamera JOIN merek ON merek.id = kamera.merek_id");
@@ -27,10 +27,9 @@ if (isset($_GET["merek_id"])) {
 		<h1>Daftar Produk</h1>
 
 		<a href="halaman_produk.php">semua produk</a> |
+
 		<?php foreach($merek as $mrk) : ?>
-
 			<a href="?merek_id=<?php echo $mrk["id"]; ?>"><?php echo $mrk["merek"]; ?></a> |
-
 		<?php endforeach; ?>
 		
 	<form action="" method="get">
@@ -41,16 +40,23 @@ if (isset($_GET["merek_id"])) {
 	<ul>
 		<?php foreach($kamera as $row) : ?>
 					
-
 			<img style="width: 100px; height: 100px;" src="../<?php echo $row["gambar"]; ?>" alt="gambar kamera">
 
-			<a href="kamera.php?id=<?php echo $row["id"]; ?>"> <?php echo $row["merek"];?> <?php echo $row["tipe"] ?></a>
+			<!-- <a href="kamera.php?id=<?php echo $row["id"]; ?>"> <?php echo $row["merek"];?> <?php echo $row["tipe"] ?></a> -->
 
+			<ul>
+				<li>merek : <?php echo $row["merek"]; ?></li>
+				<li>tipe : <?php echo $row["tipe"]; ?></li>
+				<li>harga : Rp.<?php echo $row["harga"]; ?></li>
+				<li>kondisi : <?php echo $row["kondisi"]; ?></li>
+				<li>deskripsi produk : <br><?php echo nl2br($row["deskripsi"]); ?></li>
+				<a href="linkwa"><h3>pesan sekarang</h3></a>
+			</ul>
 		
 		<?php endforeach; ?>
 	</ul>
 	
-	<a href="linkwa"><h1>beli via whatsapp!</h1></a>
+	<!-- <a href="linkwa"><h1>beli via whatsapp!</h1></a> -->
 
 </body>
 </html>
