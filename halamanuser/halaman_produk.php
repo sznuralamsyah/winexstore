@@ -1,6 +1,6 @@
 <?php
-require ('../funcions.php');
 
+require ('../funcions.php');
 
 //ambil data dari tabel kamera /query data kamera
 $kamera = query("SELECT kamera.*, merek.merek FROM kamera JOIN merek ON merek.id = kamera.merek_id");
@@ -27,7 +27,7 @@ if (isset($_GET["merek_id"])) {
 	<!-- Navigasi Start -->
 	<nav class="navigasi">
 		<div class="nav-kiri">
-			<img src="../img/alditaher.png">
+			<img src="../img/micam.png">
 			<p>MiCAM</p>
 		</div>
 		<div class="nav-kanan">
@@ -42,36 +42,45 @@ if (isset($_GET["merek_id"])) {
 		<div class="menu-etalase">
 			<div class="header-etalase">
 				<h1>Daftar Produk</h1>
-				<div class="find-product">
-					<form action="" method="get">
-						<input type="text" name="keyword" size="50" autofocus placeholder="cari berdasarkan merek/tipe.." autocomplete="off">
-						<button type="submit" name="cari">Cari Produk!</button>
-					</form>
-				</div>
 			</div>
-			<div class="allmenu-etalase">
-				<div class="list-product">
-					<a href="halaman_produk.php">semua produk</a>
-					<?php foreach($merek as $mrk) : ?>
-					<a href="?merek_id=<?php echo $mrk["id"]; ?>"><?php echo $mrk["merek"]; ?></a>
-					<?php endforeach; ?>
-				</div>
+			<div class="find-product">
+				<form action="" method="get">
+					<input type="text" name="keyword" size="50" autofocus placeholder="Cari berdasarkan merek/tipe.." autocomplete="off">
+					<button type="submit" name="cari">Cari Produk!</button>
+				</form>
 			</div>
 		</div>
+		<div class="list-merek">
+			<a href="halaman_produk.php" class="<?= isset($_GET['merek_id'])?:'active' ?>">semua produk</a>
+			<?php foreach($merek as $mrk) : ?>
+				<a href="?merek_id=<?php echo $mrk["id"]; ?>" class="<?= isset($_GET['merek_id']) && $_GET['merek_id'] == $mrk['id']?'active':'' ?>"><?php echo $mrk["merek"]; ?></a>
+			<?php endforeach; ?>
+		</div>
 	</div>
-	<ul>
+	<div class="cards">
 		<?php foreach($kamera as $row) : ?>
-		<div class="card" style="width: 18rem;">
-  			<img style="width: 100px; height: 100px;" src="../<?php echo $row["gambar"]; ?>" alt="gambar kamera" class="class-image-top">
-  			<div class="card-body">
-    			<h5 class="card-title"><a href="kamera.php?id=<?php echo $row["id"]; ?>"> <?php echo $row["merek"];?> <?php echo $row["tipe"] ?></a></h5>
-    			<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    			<a href="#" class="btn btn-primary">Go somewhere</a>
-  			</div>
-		</div>					
+			<div class="card">
+				<img src="../<?php echo $row["gambar"]; ?>" alt="gambar kamera" class="class-image-top">
+				<div class="card-body">
+					<h2 class="card-title"><?php echo $row["merek"];?> <?php echo $row["tipe"] ?></h2>
+					<ul>
+						<li>harga : Rp.<?php echo $row["harga"]; ?></li>
+						<li>kondisi : <?php echo $row["kondisi"]; ?></li>
+						<li>deskripsi produk : <br><?php echo nl2br($row["deskripsi"]); ?></li>
+					</ul>
+				</div>
+				<div class="order-icon">
+					<a class="card-action" href="whatsapp://send?text=Hello&phone=+6289694018787" target="_blank">
+					<div class="pesan">
+						<img src="../img/whatsapp.png">
+						<p>Pesan Via WhatsApp</p>
+					</div>
+				</a>
+				</div>
+				
+			</div>
 		<?php endforeach; ?>
-	</ul>
-	<a href="linkwa"><h1>beli via whatsapp!</h1></a>
+	</div>
 	<footer>
 		<p>OUR SOCIAL MEDIA</p>
 		<div class="social">

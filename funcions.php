@@ -18,10 +18,15 @@ function tambah($data) {
 		// ambil data dari tiap elemen dalam form
 	$merek = htmlspecialchars($data["merek_id"]);
 	$tipe = htmlspecialchars($data["tipe"]);
-	$gambar = htmlspecialchars($data["gambar"]);
 	$kondisi = htmlspecialchars($data["kondisi"]);
 	$deskripsi = htmlspecialchars($data["deskripsi"]);
 	$harga = htmlspecialchars($data["harga"]);
+
+//upload gambar
+	$gambar = upload();
+	if (!$gambar) {
+		return false;
+	}
 
 	$query = "INSERT INTO kamera
 				values
@@ -30,6 +35,42 @@ function tambah($data) {
 	mysqli_query($connect, $query);
 	return mysqli_affected_rows($connect);
 }	
+
+function upload() {
+	$namaFile = $_FILES["gambar"]["name"];
+	$ukuranFile = $_FILES["gambar"]["size"];
+	$error = $_FILES["gambar"]["error"];
+	$tmpName = $_FILES["gambar"]["tmp_name"];
+
+	//cek apakah ada gambar yang di upload
+	if ($error === 4) {
+		echo "<script>
+				alert('pilih gambar terlebih dahulu!');
+			</script>";
+		return false;
+	}
+	//cek apakah yang diupload adalah gambar atau bukan
+	$ekstensiGambarValid = ['jpg','jpeg','png'];
+	$ekstensiGambar = (explode('.', $namaFile));
+	$ekstensiGambar = strtolower(end($ekstensiGambar));
+
+	if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
+		echo "<script>
+				alert('yang anda upload bukan gambar!');
+			</script>";
+		return false;
+	}
+
+	//lolos pengecekan dan siap upload
+	//buat nama file baru dulu
+	$namaFileBaru = uniqid();
+	$namaFileBaru .= '.';
+	$namaFileBaru .= $ekstensiGambar;
+
+	move_uploaded_file($tmpName, '../img/' . $namaFileBaru);
+	return 'img/' . $namaFileBaru;
+
+}
 
 function hapus($id) {
 	global $connect;
@@ -44,10 +85,17 @@ function ubah($data) {
 	$id = $data["id"];
 	$merek = htmlspecialchars($data["merek_id"]);
 	$tipe = htmlspecialchars($data["tipe"]);
-	$gambar = htmlspecialchars($data["gambar"]);
+	$gambarLama = htmlspecialchars($data["gambarLama"]);
 	$kondisi = htmlspecialchars($data["kondisi"]);
 	$deskripsi = htmlspecialchars($data["deskripsi"]);
 	$harga = htmlspecialchars($data["harga"]);
+
+	//cek apakah admin menginput gambar baru
+	if ($_FILES["gambar"]["error"] === 4) {
+		$gambar = $gambarLama;
+	} else {
+		$gambar = upload();
+	}
 
 	$query = "UPDATE kamera SET
 				merek_id = '$merek',

@@ -14,7 +14,7 @@
 	<!-- Navigasi Start -->
 	<nav class="navigasi">
 		<div class="nav-kiri">
-			<img src="../img/alditaher.png">
+			<img src="../img/micam.png">
 			<p>MiCAM</p>
 		</div>
 		<div class="nav-kanan">

@@ -57,13 +57,13 @@ if (isset($_POST["login"])) {
 					<label for="username">
 						<i class="fa fa-user"></i>
 					</label>
-					<input type="text" name="username" id="username" required autocomplete="off">
+					<input type="text" name="username" id="username" placeholder="USERNAME" required autocomplete="off">
 				</div>
 				<div class="input-group">
 					<label for="password">
 						<i class="fa fa-lock"></i>
 					</label>
-					<input type="password" name="password" id="password" required autocomplete="off">
+					<input type="password" name="password" id="password" placeholder="PASSWORD" required autocomplete="off">
 				</div>
 			</div>
 			<button type="submit" name="login">Login!</button>

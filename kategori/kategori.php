@@ -14,12 +14,39 @@ $merek = query("SELECT * FROM merek");
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>kategori produk</title>
+	<link rel="stylesheet" type="text/css" href="kategori.css">
+	<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&family=Poppins:wght@100;200;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-	<h1>kategori produk</h1>
-
-	<a href="tambah_kategori.php">Tambah kategori Produk</a> 
-		<table border="1" cellpadding="10" cellspacing="0">
+	<div class="container">
+		<header>
+			<div class="left-session">
+				<h1>Halaman Admin</h1>
+			</div>
+			<div class="right-session">
+				<div class="sapa">
+					<p>Halo <?php echo $_SESSION["user"]["username"]; ?></p>
+				</div>
+				<div class="exit">
+					<a href="../logout.php"><img src="../img/logout.png"></a>
+				</div>
+			</div>
+		</header>
+		<div class="form">
+			<form action="">
+				<a href="../halaman_admin.php" class="daf">daftar produk</a>
+				<a href=" " class="cat">kategori produk</a>
+			</form>
+		</div>
+		<div class="choosen">
+			<a href="tambah_kategori.php"><img src="../img/add.png" alt="add">Tambah Kategori</a> 
+		</div>
+		<div class="table">
+			<table>
 			<tr>
 				<th>no</th>
 				<th>aksi</th>
@@ -37,6 +64,7 @@ $merek = query("SELECT * FROM merek");
 			<?php $i++; ?>
 			<?php endforeach; ?>
 		</table>
-		<a href="../halaman_admin.php">kembali ke halaman admin!</a>
+		</div>
+	</div>
 </body>
 </html>	
