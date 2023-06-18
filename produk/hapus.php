@@ -12,12 +12,12 @@ if (hapus($id) > 0) {
 	echo 
 		"<script>
 		alert ('Data produk berhasil di hapus!');
-		document.location.href = 'daftar_produk.php';
+		document.location.href = '../halaman_admin.php';
 		</script>";
 } else {
 	"<script>
 		alert ('Data produk gagal di hapus!');
-		document.location.href = 'daftar_produk.php';
+		document.location.href = '../halaman_admin.php';
 		</script>";
 }
 

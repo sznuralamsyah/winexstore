@@ -21,42 +21,80 @@ if (isset($_GET["merek_id"])) {
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Halaman produk</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="halaman_produk.css">
 </head>
 <body>
-		<h1>Daftar Produk</h1>
-
-		<a href="halaman_produk.php">semua produk</a> |
-
-		<?php foreach($merek as $mrk) : ?>
-			<a href="?merek_id=<?php echo $mrk["id"]; ?>"><?php echo $mrk["merek"]; ?></a> |
-		<?php endforeach; ?>
-		
-	<form action="" method="get">
-		<input type="text" name="keyword" size="50" autofocus placeholder="cari berdasarkan merek/tipe.." autocomplete="off">
-		<button type="submit" name="cari">Cari Produk!</button>
-	</form>
-	<br>
-	<ul>
+	<!-- Navigasi Start -->
+	<nav class="navigasi">
+		<div class="nav-kiri">
+			<img src="../img/micam.png">
+			<p>MiCAM</p>
+		</div>
+		<div class="nav-kanan">
+			<a href="../index.php">Dashboard</a>
+			<a href="halaman_produk.php">Product</a>
+			<a href="about.php">About us</a>
+		</div>
+	</nav>
+	<!-- Navigasi End -->
+	<!-- Etalase Settings -->
+	<div class="container-etalase">
+		<div class="menu-etalase">
+			<div class="header-etalase">
+				<h1>Daftar Produk</h1>
+			</div>
+			<div class="find-product">
+				<form action="" method="get">
+					<input type="text" name="keyword" size="50" autofocus placeholder="Cari berdasarkan merek/tipe.." autocomplete="off">
+					<button type="submit" name="cari">Cari Produk!</button>
+				</form>
+			</div>
+		</div>
+		<div class="list-merek">
+			<a href="halaman_produk.php" class="<?= isset($_GET['merek_id'])?:'active' ?>">semua produk</a>
+			<?php foreach($merek as $mrk) : ?>
+				<a href="?merek_id=<?php echo $mrk["id"]; ?>" class="<?= isset($_GET['merek_id']) && $_GET['merek_id'] == $mrk['id']?'active':'' ?>"><?php echo $mrk["merek"]; ?></a>
+			<?php endforeach; ?>
+		</div>
+	</div>
+	<div class="cards">
 		<?php foreach($kamera as $row) : ?>
-					
-			<img style="width: 100px; height: 100px;" src="../<?php echo $row["gambar"]; ?>" alt="gambar kamera">
-
-			<!-- <a href="kamera.php?id=<?php echo $row["id"]; ?>"> <?php echo $row["merek"];?> <?php echo $row["tipe"] ?></a> -->
-
-			<ul>
-				<li>merek : <?php echo $row["merek"]; ?></li>
-				<li>tipe : <?php echo $row["tipe"]; ?></li>
-				<li>harga : Rp.<?php echo $row["harga"]; ?></li>
-				<li>kondisi : <?php echo $row["kondisi"]; ?></li>
-				<li>deskripsi produk : <br><?php echo nl2br($row["deskripsi"]); ?></li>
-				<a href="linkwa"><h3>pesan sekarang</h3></a>
-			</ul>
-		
+			<div class="card">
+				<img src="../<?php echo $row["gambar"]; ?>" alt="gambar kamera" class="class-image-top">
+				<div class="card-body">
+					<h2 class="card-title"><?php echo $row["merek"];?> <?php echo $row["tipe"] ?></h2>
+					<ul>
+						<li>harga : Rp.<?php echo $row["harga"]; ?></li>
+						<li>kondisi : <?php echo $row["kondisi"]; ?></li>
+						<li>deskripsi produk : <br><?php echo nl2br($row["deskripsi"]); ?></li>
+					</ul>
+				</div>
+				<div class="order-icon">
+					<a class="card-action" href="whatsapp://send?text=Hello&phone=+6289694018787" target="_blank">
+					<div class="pesan">
+						<img src="../img/whatsapp.png">
+						<p>Pesan Via WhatsApp</p>
+					</div>
+				</a>
+				</div>
+				
+			</div>
 		<?php endforeach; ?>
-	</ul>
-	
-	<!-- <a href="linkwa"><h1>beli via whatsapp!</h1></a> -->
+	</div>
+	<footer>
+		<p>OUR SOCIAL MEDIA</p>
+		<div class="social">
+			<div class="instagram">
+				<a href="link ig"><img src="../img/instagram.png"></a>
+			</div>
+			<div class="tiktok">
+				<a href="link tiktok"><img src="../img/tik-tok.png"></a>
+			</div>
+			<div class="youtube">
+				<a href="link youtube"><img src="../img/youtube.png"></a>
+			</div>
+		</div>
+	</footer>
 
 </body>
 </html>
