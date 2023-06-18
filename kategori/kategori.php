@@ -31,7 +31,7 @@ $merek = query("SELECT * FROM merek");
 				<td><?php echo $i; ?></td>				
 				<td><a href="ubah_kategori.php?id=<?php echo $row["id"]; ?>">ubah</a> |
 				<a href="hapus_kategori.php?id=<?php echo $row["id"]; ?>" onclick="return confirm('apakah anda yakin ingin menghapus kategori produk?')">hapus</a>
-			</td>
+				</td>
 				<td><?php echo $row["merek"]; ?> </td>
 			</tr>
 			<?php $i++; ?>
