@@ -70,7 +70,7 @@ if (isset($_GET["merek_id"])) {
 					</ul>
 				</div>
 				<div class="order-icon">
-					<a class="card-action" href="whatsapp://send?text=Hello&phone=+6289694018787" target="_blank">
+					<a class="card-action" href="whatsapp://send?text=<?= urlencode("Halo saya ingin pesan ".$row['merek'].' '.$row['tipe']) ?>&phone=+6289694018787" target="_blank">
 					<div class="pesan">
 						<img src="../img/whatsapp.png">
 						<p>Pesan Via WhatsApp</p>
@@ -85,13 +85,13 @@ if (isset($_GET["merek_id"])) {
 		<p>OUR SOCIAL MEDIA</p>
 		<div class="social">
 			<div class="instagram">
-				<a href="link ig"><img src="../img/instagram.png"></a>
+				<a href="https://instagram.com/micam888.camera?igshid=MzNlNGNkZWQ4Mg=="><img src="../img/instagram.png"></a>
 			</div>
 			<div class="tiktok">
-				<a href="link tiktok"><img src="../img/tik-tok.png"></a>
+				<a href="https://www.tiktok.com/@micam888camera?_t=8dGmxLdwReb&_r=1"><img src="../img/tik-tok.png"></a>
 			</div>
 			<div class="youtube">
-				<a href="link youtube"><img src="../img/youtube.png"></a>
+				<a href="https://youtube.com/@micamera888"><img src="../img/youtube.png"></a>
 			</div>
 		</div>
 	</footer>

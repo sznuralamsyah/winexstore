@@ -1,4 +1,4 @@
-:root {
+/*:root {
 	--primary: #21130d;
 	--bg: #fbfcfa;
 	--sbg: #f2f5f0;
@@ -9,7 +9,6 @@
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-/*	outline: none;*/
 	text-decoration: none;
 	border: none;
 }
@@ -142,4 +141,4 @@ form button {
 .choosen a {
 	display: flex;
 	align-items: center;
-}
+}*/

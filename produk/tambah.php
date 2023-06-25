@@ -14,7 +14,9 @@ if (isset($_POST["submit"])) {
 		echo 
 		"<script>
 		alert ('data produk berhasil di tambah!');
-		</script>";
+		document.location.href = '../halaman_admin.php';
+		</script>"
+		;
 
 	} else {
 		echo "data produk gagal ditambahkan!";

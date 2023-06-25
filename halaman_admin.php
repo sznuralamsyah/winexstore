@@ -66,6 +66,7 @@ if (isset($_GET["cari"])) {
 			<th>kondisi</th>
 			<th>deskripsi</th>
 			<th>harga</th>
+			<th>top seller</th>
 		</tr>
 		<?php $i = 1; ?>
 		<?php foreach($kamera as $row) : ?>
@@ -80,7 +81,9 @@ if (isset($_GET["cari"])) {
 			<td><?php echo $row["kondisi"]; ?></td>
 			<td class="desk"><?php echo nl2br($row["deskripsi"]); ?></td>
 			<td>Rp. <?php echo $row["harga"]; ?></td>
-
+			<td>
+				<input type="radio" class="top_seller" <?= $row['top_seller'] == 1?'checked':'' ?> name="top_seller" value="<?= $row['id'] ?>">
+			</td>
 		</tr>
 		<?php $i++; ?>
 		<?php endforeach; ?>
@@ -88,5 +91,22 @@ if (isset($_GET["cari"])) {
 		</div>
 	</div>
 	
+	<script>
+		let top_seller_radio = document.querySelectorAll('.top_seller');
+		top_seller_radio.forEach(function(top_seller){
+			top_seller.addEventListener('change', function(e){
+				let xhr = new XMLHttpRequest()
+				xhr.open("POST", 'top_seller.php', true);
+				//Send the proper header information along with the request
+				xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+				xhr.onreadystatechange = function() {//Call a function when the state changes.
+				    if(xhr.readyState == 4 && xhr.status == 200) {
+				        alert(xhr.responseText);
+				    }
+				}
+				xhr.send('id='+e.target.value);
+			})
+		})
+	</script>
 </body>
 </html>	
