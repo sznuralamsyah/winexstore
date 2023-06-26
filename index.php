@@ -40,24 +40,9 @@ $top_seller = query("SELECT kamera.*, merek.merek FROM kamera JOIN merek ON mere
 	<section class="landing-image">
 		<p>SELAMAT DATANG DI <span>MiCAM</span></p>
 	</section>
-			<p>TOP SELLER</p>
-					<img style="width: 300px; height: 300px;" src="<?php echo $top_seller['gambar']; ?>" alt="gambar kamera">
-					<p>
-						<?php echo $top_seller["merek"];?> <?php echo $top_seller["tipe"] ?>
-					</p>
-					<ul>
-						<li>harga : Rp.<?php echo $top_seller["harga"]; ?></li>
-						<li>kondisi : <?php echo $top_seller["kondisi"]; ?></li>
-						<li>deskripsi produk : <br><?php echo nl2br($top_seller["deskripsi"]); ?></li>
-					</ul>
-						<a href="whatsapp://send?text=<?= urlencode("Halo saya ingin pesan ".$top_seller['merek'].' '.$top_seller['tipe']) ?>&phone=+6289694018787">
-								<img src="img/whatsapp.png">
-								<p>Pesan Via WhatsApp</p>
-						</a>
-	</section> -->
 	<section class="promo">
 		<div class="new-promo">
-			<p>NEW PRODUCT</p>
+			<p class="line">NEW PRODUCT</p>
 			<div class="items-np">
 				<div class="left-np">
 					<img style="width: 300px; height: 300px;" src="<?php echo $new_product['gambar']; ?>" alt="gambar kamera">
@@ -77,6 +62,34 @@ $top_seller = query("SELECT kamera.*, merek.merek FROM kamera JOIN merek ON mere
 								<img src="img/whatsapp.png">
 								<p>Pesan Via WhatsApp</p>
 							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="promo">
+		<div class="new-promo">
+			<p class="line">TOP SELLER</p>
+			<div class="items-np">
+				<div class="left-np">
+					<img style="width: 300px; height: 300px;" src="<?php echo $top_seller['gambar']; ?>" alt="gambar kamera">
+					<p>
+						<?php echo $top_seller["merek"];?> <?php echo $top_seller["tipe"] ?>
+					</p>
+				</div>
+				<div class="right-np">
+					<ul>
+						<li>harga : Rp.<?php echo $top_seller["harga"]; ?></li>
+						<li>kondisi : <?php echo $top_seller["kondisi"]; ?></li>
+						<li>deskripsi produk : <br><?php echo nl2br($top_seller["deskripsi"]); ?></li>
+					</ul>
+					<div class="order-icon">
+						<a href="whatsapp://send?text=<?= urlencode("Halo saya ingin pesan ".$top_seller['merek'].' '.$top_seller['tipe']) ?>&phone=+6289694018787">
+						<div class="pesan">
+							<img src="img/whatsapp.png">
+								<p>Pesan Via WhatsApp</p>
+						</div>
 						</a>
 					</div>
 				</div>

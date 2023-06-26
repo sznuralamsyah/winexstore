@@ -1,4 +1,4 @@
-/*:root {
+:root {
 	--primary: #21130d;
 	--bg: #fbfcfa;
 	--sbg: #f2f5f0;
@@ -14,7 +14,7 @@
 }
 
 body {
-	background-color: var(--primary);
+	background-color: var(--sbg);
 	color: black;
 }
 
@@ -25,14 +25,14 @@ body {
 	padding-bottom: 30px;
 }
 
-header {
+.head header {
 	display: flex;
-	background-color: var(--bg);
 	justify-content: space-between;
 	padding: 10px;
 }
 
-header div {
+.head {
+	background-color: var(--bg);
 }
 
 header .left-session {
@@ -141,4 +141,4 @@ form button {
 .choosen a {
 	display: flex;
 	align-items: center;
-}*/
+}

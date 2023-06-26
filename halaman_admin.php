@@ -29,24 +29,26 @@ if (isset($_GET["cari"])) {
 </head>
 <body>
 	<div class="container">
-		<header>
-			<div class="left-session">
-				<h1>Halaman Admin</h1>
-			</div>
-			<div class="right-session">
-				<div class="sapa">
-					<p>Halo <?php echo $_SESSION["user"]["username"]; ?></p>
+		<div class="head">
+			<header>
+				<div class="left-session">
+					<h1>Halaman Admin</h1>
 				</div>
-				<div class="exit">
-					<a href="logout.php"><img src="img/logout.png"></a>
+				<div class="right-session">
+					<div class="sapa">
+						<p>Halo <?php echo $_SESSION["user"]["username"]; ?></p>
+					</div>
+					<div class="exit">
+						<a href="logout.php"><img src="img/logout.png"></a>
+					</div>
 				</div>
+			</header>
+			<div class="form">
+				<form action="">
+					<a href=" " class="daf">daftar produk</a>
+					<a href="kategori/kategori.php" class="cat">kategori produk</a>
+				</form>
 			</div>
-		</header>
-		<div class="form">
-			<form action="">
-				<a href=" " class="daf">daftar produk</a>
-				<a href="kategori/kategori.php" class="cat">kategori produk</a>
-			</form>
 		</div>
 		<div class="choosen">
 			<a href="produk/tambah.php"><img src="img/add.png" alt="add">Tambah Produk</a>

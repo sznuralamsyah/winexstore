@@ -37,6 +37,27 @@ if (isset($_POST["submit"])) {
 </head>
 <body>
 	<div class="container const">
+		<div class="head">
+			<header>
+				<div class="left-session">
+					<h1>Halaman Admin</h1>
+				</div>
+				<div class="right-session">
+					<div class="sapa">
+						<p>Halo <?php echo $_SESSION["user"]["username"]; ?></p>
+					</div>
+					<div class="exit">
+						<a href="../logout.php"><img src="../img/logout.png"></a>
+					</div>
+				</div>
+			</header>
+			<div class="form">
+				<form action="">
+					<a href="../halaman_admin.php" class="daf">daftar produk</a>
+					<a href="../kategori/kategori.php" class="cat">kategori produk</a>
+				</form>
+			</div>
+		</div>
 		<header>
 			<h1>Tambah kategori Produk</h1>
 		</header>
