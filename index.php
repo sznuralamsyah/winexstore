@@ -1,9 +1,9 @@
 <?php 
 
 require ('funcions.php');
-$kamera = query("SELECT kamera.*, merek.merek FROM kamera JOIN merek ON merek.id = kamera.merek_id ORDER BY id");
-$new_product = $kamera[count($kamera)-1];
-$top_seller = query("SELECT kamera.*, merek.merek FROM kamera JOIN merek ON merek.id = kamera.merek_id WHERE top_seller = 1")[0];
+$pakaian = query("SELECT pakaian.*, kategori.kategori FROM pakaian JOIN kategori ON kategori.id = pakaian.kategori_id ORDER BY id");
+$new_product = $pakaian[count($pakaian)-1];
+$top_seller = query("SELECT pakaian.*, kategori.kategori FROM pakaian JOIN kategori ON kategori.id = pakaian.kategori_id WHERE top_seller = 1")[0];
 
 ?>
 
@@ -45,19 +45,19 @@ $top_seller = query("SELECT kamera.*, merek.merek FROM kamera JOIN merek ON mere
 			<p class="line">NEW PRODUCT</p>
 			<div class="items-np">
 				<div class="left-np">
-					<img style="width: 300px; height: 300px;" src="<?php echo $new_product['gambar']; ?>" alt="gambar kamera">
+					<img style="width: 300px; height: 300px;" src="<?php echo $new_product['gambar']; ?>" alt="gambar pakaian">
 					<p>
-						<?php echo $new_product["merek"];?> <?php echo $new_product["tipe"] ?>
+						<?php echo $new_product["nama"];?> <?php echo $new_product["edisi"] ?>
 					</p>
 				</div>
 				<div class="right-np">
 					<ul>
+						<li>Kategori : <?php echo $new_product["kategori"]; ?></li>
 						<li>harga : Rp.<?php echo $new_product["harga"]; ?></li>
-						<li>kondisi : <?php echo $new_product["kondisi"]; ?></li>
 						<li>deskripsi produk : <br><?php echo nl2br($new_product["deskripsi"]); ?></li>
 					</ul>
 					<div class="order-icon">
-						<a href="whatsapp://send?text=<?= urlencode("Halo saya ingin pesan ".$new_product['merek'].' '.$new_product['tipe']) ?>&phone=+6289694018787">
+						<a href="whatsapp://send?text=<?= urlencode("Halo saya ingin pesan ".$new_product['nama'].' '.$new_product['edisi']) ?>&phone=+6281213566840">
 							<div class="pesan">
 								<img src="img/whatsapp.png">
 								<p>Pesan Via WhatsApp</p>
@@ -73,19 +73,19 @@ $top_seller = query("SELECT kamera.*, merek.merek FROM kamera JOIN merek ON mere
 			<p class="line">TOP SELLER</p>
 			<div class="items-np">
 				<div class="left-np">
-					<img style="width: 300px; height: 300px;" src="<?php echo $top_seller['gambar']; ?>" alt="gambar kamera">
+					<img style="width: 300px; height: 300px;" src="<?php echo $top_seller['gambar']; ?>" alt="gambar pakaian">
 					<p>
-						<?php echo $top_seller["merek"];?> <?php echo $top_seller["tipe"] ?>
+						<?php echo $top_seller["nama"];?> <?php echo $top_seller["edisi"] ?>
 					</p>
 				</div>
 				<div class="right-np">
 					<ul>
+						<li>kategori : <?php echo $top_seller["kategori"]; ?></li>
 						<li>harga : Rp.<?php echo $top_seller["harga"]; ?></li>
-						<li>kondisi : <?php echo $top_seller["kondisi"]; ?></li>
 						<li>deskripsi produk : <br><?php echo nl2br($top_seller["deskripsi"]); ?></li>
 					</ul>
 					<div class="order-icon">
-						<a href="whatsapp://send?text=<?= urlencode("Halo saya ingin pesan ".$top_seller['merek'].' '.$top_seller['tipe']) ?>&phone=+6289694018787">
+						<a href="whatsapp://send?text=<?= urlencode("Halo saya ingin pesan ".$top_seller['nama'].' '.$top_seller['edisi']) ?>&phone=+6281213566840">
 						<div class="pesan">
 							<img src="img/whatsapp.png">
 								<p>Pesan Via WhatsApp</p>

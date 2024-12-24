@@ -7,7 +7,7 @@ if (!isset($_SESSION["login"])) {
 }
 //koneksi ke dbms
 
-$connect = mysqli_connect("localhost", "root", "", "tokoonline");
+$connect = mysqli_connect("localhost", "root", "", "winexstore");
 //cek apakah tombol submit sudah pernah di tekan
 if (isset($_POST["submit"])) {
 	if (ubah($_POST) > 0) {
@@ -25,8 +25,8 @@ if (isset($_POST["submit"])) {
 }
 $id = $_GET['id'];
 
-$kmr = query("SELECT * FROM kamera WHERE id = $id")[0];
-$merek= query("SELECT * FROM merek");
+$pkn = query("SELECT * FROM pakaian WHERE id = $id")[0];
+$ktgr= query("SELECT * FROM kategori");
 
 ?>
 
@@ -75,41 +75,41 @@ $merek= query("SELECT * FROM merek");
 		<form action="" method="post" enctype="multipart/form-data">
 			<div class="image-preview">
 					<label for="gambar">
-						<img src="../<?php echo $kmr["gambar"] ?>" id="image-preview" alt="gambar kamera">
+						<img src="../<?php echo $pkn["gambar"] ?>" id="image-preview" alt="gambar pakaian">
 						<div>Pilih atau drop gambar</div>
 						<input type="file" name="gambar" id="gambar" accept="image/*">
 					</label>
 			</div>
 			<div class="row">
-				<input type="hidden" name="id" value="<?php echo $kmr["id"]; ?>">
-				<input type="hidden" name="gambarLama" value="<?php echo $kmr["gambar"]; ?>">
+				<input type="hidden" name="id" value="<?php echo $pkn["id"]; ?>">
+				<input type="hidden" name="gambarLama" value="<?php echo $pkn["gambar"]; ?>">
 
 				<div class="input-group">
-					<label for="merek">merek : </label>
-					<select class="input" name="merek_id" id="merek">
-					<?php foreach($merek as $mrk) : ?>
-						<option <?php echo $kmr['merek_id'] == $mrk['id'] ? 'selected' : '' ?> value="<?php echo $mrk['id'] ?>"><?php echo $mrk["merek"] ?></option>
-					<?php endforeach; ?>
-					</select>
+					<label for="nama">nama : </label>
+					<input class="input" type="text" name="nama" id="nama" required autocomplete="off" value="<?php echo $pkn["nama"] ?>">
 				</div>
 				<div class="input-group">
-					<label for="tipe">tipe : </label>
-					<input class="input" type="text" name="tipe" id="tipe" required autocomplete="off" value="<?php echo $kmr["tipe"] ?>">> 
+					<label for="kategori">kategori : </label>
+						<select class="input" name="kategori_id" id="kategori">
+						<?php foreach($kategori as $ktgr) : ?>
+							<option <?php echo $pkn['kategori_id'] == $ktgr['id'] ? 'selected' : '' ?> value="<?php echo $ktgr['id'] ?>"><?php echo $ktgr["kategori"] ?></option>
+						<?php endforeach; ?>
+						</select>
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-group">
-					<label for="kondisi">kondisi : </label>
-					<input class="input" type="text" name="kondisi" id="kondisi" required autocomplete="off" value="<?php echo $kmr['kondisi'] ?>"> 
+					<label for="edisi">edisi : </label>
+					<input class="input" type="text" name="edisi" id="edisi" required autocomplete="off" value="<?php echo $pkn['edisi'] ?>"> 
 				</div>
 				<div class="input-group">
 					<label for="harga">harga : </label>
-				<input class="input" type="text" name="harga" id="harga" required autocomplete="off" value="<?php echo $kmr["harga"] ?>"> 
+				<input class="input" type="text" name="harga" id="harga" required autocomplete="off" value="<?php echo $pkn["harga"] ?>"> 
 				</div>
 			</div>
 			<div class="input-group">
 				<label for="deskripsi">deskripsi : </label>
-				<textarea class="input" rows="6" cols="30" name="deskripsi" id="deskripsi" required><?php echo $kmr["deskripsi"] ?></textarea>
+				<textarea class="input" rows="6" cols="30" name="deskripsi" id="deskripsi" required><?php echo $pkn["deskripsi"] ?></textarea>
 			</div>
 				<button type="submit" name="submit" onclick="return confirm('Apakah anda yakin ingin mengubah data produk?')">Ubah Data Prduk</button>
 		</form>

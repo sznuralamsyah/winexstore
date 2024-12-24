@@ -7,7 +7,7 @@ if (!isset($_SESSION["login"])) {
 }
 //koneksi ke dbms
 
-$connect = mysqli_connect("localhost", "root", "", "tokoonline");
+$connect = mysqli_connect("localhost", "root", "", "winexstore");
 //cek apakah tombol submit sudah pernah di tekan
 if (isset($_POST["submit"])) {
 	if (ubah_kategori($_POST) > 0) {
@@ -24,7 +24,7 @@ if (isset($_POST["submit"])) {
 	}
 }
 $id = $_GET['id'];
-$mrk = query("SELECT * FROM merek WHERE id = $id")[0];
+$ktgr = query("SELECT * FROM kategori WHERE id = $id")[0];
 
 ?>
 
@@ -74,8 +74,8 @@ $mrk = query("SELECT * FROM merek WHERE id = $id")[0];
 				<input type="hidden" name="id" value="<?php echo $mrk["id"] ?>">
 
 				<div class="input-group">
-					<label for="merek">merek : </label>
-					<input class="input" type="text" name="merek" id="merek" value="<?php echo $mrk["merek"]?>">
+					<label for="kategori">Kategori : </label>
+					<input class="input" type="text" name="kategori" id="kategori" value="<?php echo $ktgr["kategori"]?>">
 				</div>
 				<button type="submit" name="submit" onclick="return confirm('Apakah anda yakin ingin mengubah kategori produk?')">Ubah kategori Prduk</button>
 	</form>

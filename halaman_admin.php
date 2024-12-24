@@ -6,11 +6,11 @@ if (!isset($_SESSION["login"])) {
 }
 
 //ambil data dari tabel kamera /query data kamera
-$kamera = query("SELECT kamera.*, merek.merek FROM kamera JOIN merek ON merek.id = kamera.merek_id");
+$pakaian = query("SELECT pakaian.*, pakaian.nama FROM pakaian JOIN kategori ON kategori.id = pakaian.kategori_id");
 
 //tombol cari ditekan
 if (isset($_GET["cari"])) {
-	$kamera = cari($_GET["keyword"]);
+	$pakaian = cari($_GET["keyword"]);
 }
 
 ?>
@@ -53,7 +53,7 @@ if (isset($_GET["cari"])) {
 		<div class="choosen">
 			<a href="produk/tambah.php"><img src="img/add.png" alt="add">Tambah Produk</a>
 			<form action="" method="get">
-				<input type="text" name="keyword" size="50" autofocus placeholder="cari berdasarkan merek/tipe.." autocomplete="off">
+				<input type="text" name="keyword" size="50" autofocus placeholder="cari berdasarkan nama/kategori.." autocomplete="off">
 				<button type="submit" name="cari">Cari Produk!</button>
 			</form>
 		</div>
@@ -62,25 +62,25 @@ if (isset($_GET["cari"])) {
 		<tr>
 			<th>no</th>
 			<th>aksi</th>
-			<th>merek</th>
-			<th>tipe</th>
+			<th>nama</th>
+			<th>kategori</th>
 			<th>gambar</th>
-			<th>kondisi</th>
+			<th>edisi</th>
 			<th>deskripsi</th>
 			<th>harga</th>
 			<th>top seller</th>
 		</tr>
 		<?php $i = 1; ?>
-		<?php foreach($kamera as $row) : ?>
+		<?php foreach($pakaian as $row) : ?>
 		<tr>
 			<td><?php echo $i; ?></td>				
 			<td><a href="produk/ubah.php?id=<?php echo $row["id"]; ?>">ubah</a> |
 				<a href="produk/hapus.php?id=<?php echo $row["id"]; ?>" onclick="return confirm('apakah anda yakin ingin menghapus data produk?')">hapus</a>
 			</td>
-			<td><?php echo $row["merek"]; ?> </td>
-			<td><?php echo $row["tipe"]; ?></td>
-			<td><img style="width: 100px; height: 100px;" src="<?php echo $row["gambar"]; ?>" alt="gambar kamera"></td>
-			<td><?php echo $row["kondisi"]; ?></td>
+			<td><?php echo $row["nama"]; ?> </td>
+			<td><?php echo $row["kategori"]; ?></td>
+			<td><img style="width: 100px; height: 100px;" src="<?php echo $row["gambar"]; ?>" alt="gambar pakaian"></td>
+			<td><?php echo $row["edisi"]; ?></td>
 			<td class="desk"><?php echo nl2br($row["deskripsi"]); ?></td>
 			<td>Rp. <?php echo $row["harga"]; ?></td>
 			<td>

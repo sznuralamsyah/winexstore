@@ -5,7 +5,7 @@ if (!isset($_SESSION["login"])) {
 	exit;
 }
 //ambil data dari tabel merek
-$merek = query("SELECT * FROM merek");
+$kategori = query("SELECT * FROM kategori");
 
 ?>
 <!DOCTYPE html>
@@ -50,16 +50,16 @@ $merek = query("SELECT * FROM merek");
 			<tr>
 				<th>no</th>
 				<th>aksi</th>
-				<th>merek</th>
+				<th>kategori</th>
 			</tr>
 			<?php $i = 1; ?>
-			<?php foreach($merek as $row) : ?>
+			<?php foreach($kategori as $row) : ?>
 			<tr>
 				<td><?php echo $i; ?></td>				
 				<td><a href="ubah_kategori.php?id=<?php echo $row["id"]; ?>">ubah</a> |
 				<a href="hapus_kategori.php?id=<?php echo $row["id"]; ?>" onclick="return confirm('apakah anda yakin ingin menghapus kategori produk?')">hapus</a>
 				</td>
-				<td><?php echo $row["merek"]; ?> </td>
+				<td><?php echo $row["kategori"]; ?> </td>
 			</tr>
 			<?php $i++; ?>
 			<?php endforeach; ?>

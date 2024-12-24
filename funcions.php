@@ -1,7 +1,7 @@
 <?php 
 session_start();
 //koneksi ke databasae
-$connect = mysqli_connect("localhost", "root", "", "tokoonline");
+$connect = mysqli_connect("localhost", "root", "", "winexstore");
 
 function query($query) {
 	global $connect;
@@ -16,9 +16,9 @@ function query($query) {
 function tambah($data) {
 	global $connect;
 		// ambil data dari tiap elemen dalam form
-	$merek = htmlspecialchars($data["merek_id"]);
-	$tipe = htmlspecialchars($data["tipe"]);
-	$kondisi = htmlspecialchars($data["kondisi"]);
+	$nama = htmlspecialchars($data["nama"]);
+	$kategori = htmlspecialchars($data["kategori"]);
+	$edisi = htmlspecialchars($data["edisi"]);
 	$deskripsi = htmlspecialchars($data["deskripsi"]);
 	$harga = htmlspecialchars($data["harga"]);
 
@@ -28,9 +28,9 @@ function tambah($data) {
 		return false;
 	}
 
-	$query = "INSERT INTO kamera
+	$query = "INSERT INTO pakaian
 				values
-			('','$merek','$tipe','$gambar','$kondisi','$deskripsi','$harga')
+			('','$nama','$kategori','$gambar','$edisi','$deskripsi','$harga')
 	";
 	mysqli_query($connect, $query);
 	return mysqli_affected_rows($connect);
@@ -74,7 +74,7 @@ function upload() {
 
 function hapus($id) {
 	global $connect;
-	$query ="DELETE FROM kamera where id = $id";
+	$query ="DELETE FROM pakaian where id = $id";
 	mysqli_query($connect, $query);
 	return mysqli_affected_rows($connect);
 }
@@ -83,10 +83,10 @@ function ubah($data) {
 	global $connect;
 		// ambil data dari tiap elemen dalam form
 	$id = $data["id"];
-	$merek = htmlspecialchars($data["merek_id"]);
-	$tipe = htmlspecialchars($data["tipe"]);
+	$nama = htmlspecialchars($data["nama_id"]);
+	$kategori = htmlspecialchars($data["kategori"]);
 	$gambarLama = htmlspecialchars($data["gambarLama"]);
-	$kondisi = htmlspecialchars($data["kondisi"]);
+	$edisi = htmlspecialchars($data["edisi"]);
 	$deskripsi = htmlspecialchars($data["deskripsi"]);
 	$harga = htmlspecialchars($data["harga"]);
 
@@ -97,11 +97,11 @@ function ubah($data) {
 		$gambar = upload();
 	}
 
-	$query = "UPDATE kamera SET
-				merek_id = '$merek',
-				tipe = '$tipe',
+	$query = "UPDATE pakaian SET
+				nama = '$nama',
+				kategori = '$kategori',
 				gambar = '$gambar',
-				kondisi = '$kondisi',
+				edisi = '$edisi',
 				deskripsi = '$deskripsi',
 				harga = '$harga'
 				WHERE id = $id
@@ -112,11 +112,19 @@ function ubah($data) {
 }
 
 function cari($keyword) {
-	$query = "SELECT kamera.*, merek.merek FROM kamera JOIN merek ON merek.id = kamera.merek_id
-			WHERE 
-			merek LIKE '%$keyword%' OR 
-			tipe LIKE '%$keyword%'
-			";
+	// $query = "SELECT pakaian.*, nama.nama FROM pakaian JOIN nama ON nama.id = pakaian.nama_id
+	// 		WHERE 
+	// 		nama LIKE '%$keyword%' OR 
+	// 		kategori LIKE '%$keyword%'
+	// 		";
+	$query = "SELECT pakaian.*, kategori.kategori 
+          FROM pakaian 
+          JOIN kategori ON kategori.id = pakaian.kategori_id
+          WHERE 
+          pakaian.nama LIKE '%$keyword%' OR 
+          kategori.kategori LIKE '%$keyword%'
+          ";
+
 	return query($query);		
 
 }
@@ -150,7 +158,7 @@ function registrasi($data) {
 	$password = password_hash($password, PASSWORD_DEFAULT);
 
 	//tambahkan user ke database
-	mysqli_query($connect, "INSERT INTO user values('', '$username', '$password')");
+	mysqli_query($connect, "INSERT INTO user values('$username', '$password')");
 
 	return mysqli_affected_rows($connect);
 }
@@ -158,10 +166,10 @@ function registrasi($data) {
 function tambah_kategori($data) {
 	global $connect;
 		// ambil data dari tiap elemen dalam form
-	$merek = htmlspecialchars($data["merek"]);
-	$query = "INSERT INTO merek
+	$kategori = htmlspecialchars($data["kategori"]);
+	$query = "INSERT INTO kategori
 				values
-			('','$merek')
+			('','$kategori')
 	";
 	mysqli_query($connect, $query);
 	return mysqli_affected_rows($connect);
@@ -171,10 +179,10 @@ function ubah_kategori($data) {
 	global $connect;
 		// ambil data dari tiap elemen dalam form
 	$id = $data["id"];
-	$merek = htmlspecialchars($data["merek"]);
+	$kategori = htmlspecialchars($data["kategori"]);
 
-	$query = "UPDATE merek SET
-				merek = '$merek'
+	$query = "UPDATE kategori SET
+				kategori = '$kategori'
 				WHERE id = $id ";
 	mysqli_query($connect, $query);
 	return mysqli_affected_rows($connect);
@@ -182,7 +190,7 @@ function ubah_kategori($data) {
 
 function hapus_kategori($id) {
 	global $connect;
-	$query ="DELETE FROM merek where id = $id";
+	$query ="DELETE FROM kategori where id = $id";
 	mysqli_query($connect, $query);
 	return mysqli_affected_rows($connect);
 }

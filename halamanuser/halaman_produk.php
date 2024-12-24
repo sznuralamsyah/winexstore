@@ -3,14 +3,14 @@
 require ('../funcions.php');
 
 //ambil data dari tabel kamera /query data kamera
-$kamera = query("SELECT kamera.*, merek.merek FROM kamera JOIN merek ON merek.id = kamera.merek_id");
-$merek = query("SELECT * FROM merek");
+$pakaian = query("SELECT pakaian.*, kategori.kategori FROM pakaian JOIN kategori ON kategori.id = pakaian.kategori_id");
+$kategori = query("SELECT * FROM kategori");
 //tombol cari ditekan
 if (isset($_GET["cari"])) {
-	$kamera = cari($_GET["keyword"]);
+	$pakaian = cari($_GET["keyword"]);
 }
-if (isset($_GET["merek_id"])) {
-	$kamera = query("SELECT kamera.*, merek.merek FROM kamera JOIN merek ON merek.id = kamera.merek_id WHERE merek.id = $_GET[merek_id]");
+if (isset($_GET["kategori_id"])) {
+	$pakaian = query("SELECT pakaian.*, kategori.kategori FROM pakaian JOIN kategori ON kategori.id = kategori.kategori_id WHERE kategori.id = $_GET[kategori_id]");
 }
 
 ?>
@@ -45,32 +45,32 @@ if (isset($_GET["merek_id"])) {
 			</div>
 			<div class="find-product">
 				<form action="" method="get">
-					<input type="text" name="keyword" size="50" autofocus placeholder="Cari berdasarkan merek/tipe.." autocomplete="off">
+					<input type="text" name="keyword" size="50" autofocus placeholder="Cari berdasarkan nama/kategori.." autocomplete="off">
 					<button type="submit" name="cari">Cari Produk!</button>
 				</form>
 			</div>
 		</div>
 		<div class="list-merek">
-			<a href="halaman_produk.php" class="<?= isset($_GET['merek_id'])?:'active' ?>">semua produk</a>
-			<?php foreach($merek as $mrk) : ?>
-				<a href="?merek_id=<?php echo $mrk["id"]; ?>" class="<?= isset($_GET['merek_id']) && $_GET['merek_id'] == $mrk['id']?'active':'' ?>"><?php echo $mrk["merek"]; ?></a>
+			<a href="halaman_produk.php" class="<?= isset($_GET['kategori_id'])?:'active' ?>">semua produk</a>
+			<?php foreach($kategori as $ktgr) : ?>
+				<a href="?kategori_id=<?php echo $ktgr["id"]; ?>" class="<?= isset($_GET['kategori_id']) && $_GET['kategori_id'] == $ktgr['id']?'active':'' ?>"><?php echo $ktgr["kategori"]; ?></a>
 			<?php endforeach; ?>
 		</div>
 	</div>
 	<div class="cards">
-		<?php foreach($kamera as $row) : ?>
+		<?php foreach($pakaian as $row) : ?>
 			<div class="card">
-				<img src="../<?php echo $row["gambar"]; ?>" alt="gambar kamera" class="class-image-top">
+				<img src="../<?php echo $row["gambar"]; ?>" alt="gambar pakaian" class="class-image-top">
 				<div class="card-body">
-					<h2 class="card-title"><?php echo $row["merek"];?> <?php echo $row["tipe"] ?></h2>
+					<h2 class="card-title"><?php echo $row["nama"];?> <?php echo $row["kategori"] ?></h2>
 					<ul>
+						<li>edisi : <?php echo $row["edisi"]; ?></li>
 						<li>harga : Rp.<?php echo $row["harga"]; ?></li>
-						<li>kondisi : <?php echo $row["kondisi"]; ?></li>
 						<li>deskripsi produk : <br><?php echo nl2br($row["deskripsi"]); ?></li>
 					</ul>
 				</div>
 				<div class="order-icon">
-					<a class="card-action" href="whatsapp://send?text=<?= urlencode("Halo saya ingin pesan ".$row['merek'].' '.$row['tipe']) ?>&phone=+6289694018787" target="_blank">
+					<a class="card-action" href="whatsapp://send?text=<?= urlencode("Halo saya ingin pesan ".$row['nama'].' '.$row['edisi']) ?>&phone=+6281213566840" target="_blank">
 					<div class="pesan">
 						<img src="../img/whatsapp.png">
 						<p>Pesan Via WhatsApp</p>

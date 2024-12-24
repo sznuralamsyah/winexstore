@@ -7,7 +7,7 @@ if (!isset($_SESSION["login"])) {
 }
 //koneksi ke dbms
 
-$connect = mysqli_connect("localhost", "root", "", "tokoonline");
+$connect = mysqli_connect("localhost", "root", "", "winexstore");
 //cek apakah tombol submit sudah pernah di tekan
 if (isset($_POST["submit"])) {
 	if (tambah($_POST) > 0) {
@@ -22,7 +22,7 @@ if (isset($_POST["submit"])) {
 		echo "data produk gagal ditambahkan!";
 	}
 }
-$merek = query("SELECT * FROM merek");
+$pakaian = query("SELECT * FROM pakaian");
 
 ?>
 <!DOCTYPE html>
@@ -77,22 +77,22 @@ $merek = query("SELECT * FROM merek");
 				</div>
 				<div class="row">
 					<div class="input-group">
-						<label for="merek">merek</label>
-						<select class="input" name="merek_id" id="merek">
-							<?php foreach($merek as $mrk) : ?>
-							<option value="<?php echo $mrk['id'] ?>"><?php echo $mrk["merek"] ?></option>
-							<?php endforeach; ?>
-						</select>
+					<label for="nama">nama</label>
+					<input class="input" type="text" name="nama" id="nama" placeholder="masukkan nama produk" required autocomplete="off">
 					</div>
 					<div class="input-group">
-						<label for="tipe">tipe</label>
-						<input class="input" type="text" name="tipe" id="tipe" placeholder="masukkan tipe produk" required autocomplete="off">
+						<label for="kategori">kategori</label>
+						<select class="input" name="kaetgori_id" id="kategori">
+							<?php foreach($kategori as $ktgr) : ?>
+							<option value="<?php echo $ktgr['id'] ?>"><?php echo $ktgr["kategori"] ?></option>
+							<?php endforeach; ?>
+						</select>
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-group">
-						<label for="kondisi">kondisi</label>
-						<input class="input" type="text" name="kondisi" id="kondisi" placeholder="masukkan kondisi produk" required autocomplete="off">
+						<label for="edisi">edisi</label>
+						<input class="input" type="text" name="edisi" id="edisi" placeholder="masukkan edisi produk" required autocomplete="off">
 					</div>
 					<div class="input-group">
 						<label for="harga">harga</label>

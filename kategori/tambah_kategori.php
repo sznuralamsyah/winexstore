@@ -7,7 +7,7 @@ if (!isset($_SESSION["login"])) {
 }
 //koneksi ke dbms
 
-$connect = mysqli_connect("localhost", "root", "", "tokoonline");
+$connect = mysqli_connect("localhost", "root", "", "winexstore");
 //cek apakah tombol submit sudah pernah di tekan
 if (isset($_POST["submit"])) {
 	if (tambah_kategori($_POST) > 0) {
@@ -66,8 +66,8 @@ if (isset($_POST["submit"])) {
 		</div>
 		<form action="" method="post">
 			<div class="input-group">
-				<label for="merek">kategori : </label>
-				<input class="input" type="text" name="merek" id="merek" autocomplete="off">
+				<label for="kategori">kategori : </label>
+				<input class="input" type="text" name="kategori" id="kategori" autocomplete="off">
 			</div>
 			<button type="submit" name="submit">Tambah kategori Produk!</button>
 		</form>
