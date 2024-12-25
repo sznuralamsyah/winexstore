@@ -86,8 +86,8 @@ function ubah($data) {
 	global $connect;
 		// ambil data dari tiap elemen dalam form
 	$id = $data["id"];
-	$nama = htmlspecialchars($data["nama_id"]);
-	$kategori = htmlspecialchars($data["kategori"]);
+	$nama = htmlspecialchars($data["nama"]);
+	$kategori = htmlspecialchars($data["kategori_id"]);
 	$gambarLama = htmlspecialchars($data["gambarLama"]);
 	$edisi = htmlspecialchars($data["edisi"]);
 	$deskripsi = htmlspecialchars($data["deskripsi"]);
@@ -102,7 +102,7 @@ function ubah($data) {
 
 	$query = "UPDATE pakaian SET
 				nama = '$nama',
-				kategori = '$kategori',
+				kategori_id = '$kategori',
 				gambar = '$gambar',
 				edisi = '$edisi',
 				deskripsi = '$deskripsi',

@@ -88,11 +88,23 @@ $ktgr= query("SELECT * FROM kategori");
 					<label for="nama">nama : </label>
 					<input class="input" type="text" name="nama" id="nama" required autocomplete="off" value="<?php echo $pkn["nama"] ?>">
 				</div>
-				<div class="input-group">
+				<!-- <div class="input-group">
 					<label for="kategori">kategori : </label>
 						<select class="input" name="kategori_id" id="kategori">
 						<?php foreach($kategori as $ktgr) : ?>
-							<option <?php echo $pkn['kategori_id'] == $ktgr['id'] ? 'selected' : '' ?> value="<?php echo $ktgr['id'] ?>"><?php echo $ktgr["kategori"] ?></option>
+							<option <?php echo $pkn['kategori_id'] == $ktgr['id'] ? 'selected' : '' ?> value="<?php echo $ktgr['id'] ?>">
+								<?php echo $ktgr["kategori"] ?>
+							</option>
+						<?php endforeach; ?>
+						</select>
+				</div> -->
+				<div class="input-group">
+					<label for="kategori">kategori : </label>
+						<select class="input" name="kategori_id" id="kategori">
+						<?php foreach($ktgr as $kategori) : ?>
+							<option <?php echo $pkn['kategori_id'] == $kategori['id'] ? 'selected' : '' ?> value="<?php echo $kategori['id'] ?>">
+								<?php echo $kategori["kategori"] ?>
+							</option>
 						<?php endforeach; ?>
 						</select>
 				</div>
