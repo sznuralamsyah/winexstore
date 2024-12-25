@@ -22,7 +22,10 @@ if (isset($_POST["submit"])) {
 		echo "data produk gagal ditambahkan!";
 	}
 }
+
+// mengambil data dari tabel di database
 $pakaian = query("SELECT * FROM pakaian");
+$kategori = query("SELECT * FROM kategori");
 
 ?>
 <!DOCTYPE html>
@@ -82,9 +85,11 @@ $pakaian = query("SELECT * FROM pakaian");
 					</div>
 					<div class="input-group">
 						<label for="kategori">kategori</label>
-						<select class="input" name="kaetgori_id" id="kategori">
+						<select class="input" name="kategori_id" id="kategori" required>
 							<?php foreach($kategori as $ktgr) : ?>
-							<option value="<?php echo $ktgr['id'] ?>"><?php echo $ktgr["kategori"] ?></option>
+							<option value="<?php echo $ktgr['id'] ?>">
+								<?php echo $ktgr["kategori"] ?>
+							</option>
 							<?php endforeach; ?>
 						</select>
 					</div>

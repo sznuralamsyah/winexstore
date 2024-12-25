@@ -10,7 +10,7 @@ if (isset($_GET["cari"])) {
 	$pakaian = cari($_GET["keyword"]);
 }
 if (isset($_GET["kategori_id"])) {
-	$pakaian = query("SELECT pakaian.*, kategori.kategori FROM pakaian JOIN kategori ON kategori.id = kategori.kategori_id WHERE kategori.id = $_GET[kategori_id]");
+	$pakaian = query("SELECT pakaian.*, kategori.kategori FROM pakaian JOIN kategori ON kategori.id = pakaian.kategori_id WHERE kategori.id = $_GET[kategori_id]");
 }
 
 ?>

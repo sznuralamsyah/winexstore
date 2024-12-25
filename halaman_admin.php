@@ -6,7 +6,7 @@ if (!isset($_SESSION["login"])) {
 }
 
 //ambil data dari tabel kamera /query data kamera
-$pakaian = query("SELECT pakaian.*, pakaian.nama FROM pakaian JOIN kategori ON kategori.id = pakaian.kategori_id");
+$pakaian = query("SELECT pakaian.*, kategori.kategori AS kategori FROM pakaian JOIN kategori ON kategori.id = pakaian.kategori_id");
 
 //tombol cari ditekan
 if (isset($_GET["cari"])) {

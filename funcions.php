@@ -17,7 +17,7 @@ function tambah($data) {
 	global $connect;
 		// ambil data dari tiap elemen dalam form
 	$nama = htmlspecialchars($data["nama"]);
-	$kategori = htmlspecialchars($data["kategori"]);
+	$kategori = htmlspecialchars($data["kategori_id"]);
 	$edisi = htmlspecialchars($data["edisi"]);
 	$deskripsi = htmlspecialchars($data["deskripsi"]);
 	$harga = htmlspecialchars($data["harga"]);
@@ -28,10 +28,13 @@ function tambah($data) {
 		return false;
 	}
 
-	$query = "INSERT INTO pakaian
-				values
-			('','$nama','$kategori','$gambar','$edisi','$deskripsi','$harga')
-	";
+//memasukan data ke tabel pakaian
+	// $query = "INSERT INTO pakaian
+	// 			values
+	// 		('$nama','$kategori','$gambar','$edisi','$deskripsi','$harga')
+	// ";
+	$query = "INSERT INTO pakaian (nama, kategori_id, gambar, edisi, deskripsi, harga)
+          VALUES ('$nama', '$kategori', '$gambar', '$edisi', '$deskripsi', '$harga')";
 	mysqli_query($connect, $query);
 	return mysqli_affected_rows($connect);
 }	
@@ -167,10 +170,11 @@ function tambah_kategori($data) {
 	global $connect;
 		// ambil data dari tiap elemen dalam form
 	$kategori = htmlspecialchars($data["kategori"]);
-	$query = "INSERT INTO kategori
-				values
-			('','$kategori')
-	";
+	// $query = "INSERT INTO kategori
+	// 			values
+	// 		('$kategori')
+	// ";
+	$query = "INSERT INTO kategori (kategori) VALUES ('$kategori')";
 	mysqli_query($connect, $query);
 	return mysqli_affected_rows($connect);
 }	
