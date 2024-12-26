@@ -40,7 +40,7 @@ if (isset($_GET["cari"])) {
 					</div>
 					<div class="exit">
 						<a href="logout.php"><img src="img/logout.png"></a>
-						<a href="daftaradmin.php"><img src="img/logout.png"></a>
+						<a href="daftaradmin.php"><img src="img/edit.png"></a>
 					</div>
 				</div>
 			</header>

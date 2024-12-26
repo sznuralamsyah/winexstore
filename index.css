@@ -1,10 +1,10 @@
 :root {
-	--primary: #21130d;
+	--primary: #000000;
 	--bg: #fbfcfa;
 }
 
 * {
-	font-family: 'Oswald', sans-serif;
+	font-family: 'Poppins', sans-serif;
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
@@ -20,7 +20,7 @@ body {
 
 .navigasi {
 	width: 100%;
-	height: 50px;
+	height: 70px;
 	background-color: var(--primary);
 	display: flex;
 	justify-content: space-between;
@@ -31,37 +31,45 @@ body {
 	left: 0;
 	right: 0;
 	z-index: 99;
-	/*
-	box-shadow: -1px 1px 1px 0px rgba(0,0,0,0.8);
-	-webkit-box-shadow: -1px 3px 6px 0px rgba(0,0,0,0.8);
-	-moz-box-shadow: -1px 3px 6px 0px rgba(0,0,0,0.8);
-	*/
+	box-shadow: -1px 1px 1px 0px rgba(0,0,0,0.5);
+	-webkit-box-shadow: -1px 3px 6px 0px rgba(0,0,0,0.5);
+	-moz-box-shadow: -1px 3px 6px 0px rgba(0,0,0,0.5);
+	
 }
 
 .navigasi .nav-kiri {
 	background-color: var(--primary);
 	width: 250px;
-	height: 36px;
+	height: 70px;
 	font-size: 20px;
+	display: flex; /* Gunakan flexbox */
+    align-items: center; /* Align vertikal ke tengah */
+    gap: 3px; /* Beri jarak antara gambar dan teks */
 }
 
 .nav-kiri img {
 	width: 50px;
 	height: 50px;
 	float: left;
+	object-fit: contain; /* Pastikan gambar tidak terdistorsi */
+    vertical-align: middle; /* Opsional, hanya untuk keamanan */
 }
 
 .navigasi .nav-kiri p {
-	font-style: oblique;
 	color: var(--bg);
+	font-size: 24px;
+	font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins */
+    font-weight: 600; /* Semibold */
+	font-style: italic;
 }
 
 .navigasi .nav-kanan {
 	width: 500px;
-	height: 36px;
+	height: 70px;
 	background-color: var(--primary);
 	display: flex;
 	justify-content: flex-end;
+	align-items: center;
 }
 
 .navigasi .nav-kanan a {
@@ -69,20 +77,62 @@ body {
 	font-size: 18px;
 	margin: 0 16px;
 	color: var(--bg);
+	font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins */
+    font-weight: 500;
 }
 
-.landing-image {
+/* .landing-image {
 	width: 100%;
-	height: 800px;
+	height:850px;
 	background-image: url("img/slideshow-03.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 -120px;
 	display: flex;
 	align-items: center;
+} */
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+	height: 827px;
+    margin: 0 auto;
+    overflow: hidden;
 }
 
-.landing-image p {
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 100%;
+    height: 827px; /* Sesuaikan dengan kebutuhan */
+    object-fit: cover;
+}
+
+button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+button.prev {
+    left: 10px;
+}
+
+button.next {
+    right: 10px;
+}
+
+
+/* .landing-image p {
 	margin: 0 auto;
 	font-size: 60px;
 	color: var(--bg);
@@ -92,7 +142,7 @@ body {
 
 .landing-image p span {
 	font-style: oblique;
-}
+} */
 
 .promo {
 	width: 100%;
@@ -119,6 +169,8 @@ body {
 
 .line {
 	border-bottom: 1px solid var(--primary);
+	font-family: 'Poppins', sans-serif;
+	font-weight: 600;
 }
 
 .right-np {
@@ -127,7 +179,9 @@ body {
 
 .right-np ul {
 	list-style-type: none;
-	font-size: 25px;
+	font-size: 20px;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 300;
 }
 
 .right-np .order-icon {
@@ -137,9 +191,10 @@ body {
 }
 
 .order-icon a {
-	width: 60%;
+	width: 80%;
 	color: white;
 	font-family: 'Poppins', sans-serif;
+	border-radius: 25px;
 }
 
 .new-promo p {
@@ -154,23 +209,25 @@ body {
 
 .left-np p {
 	text-align: center;
-	font-size: 30px;
+	font-size: 20px;
 	margin: 10px;
 	display: block;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 500;
 }
 
 div.pesan {
 	width: 100%;
 	background-color: limegreen;
-	height: 30px;
-	border-radius: 3px;
+	height: 35px;
+	border-radius: 25px;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
 }
 
 .pesan p {
-	font-size: 15px;
+	font-size: 13px;
 }
 
 .pesan img {

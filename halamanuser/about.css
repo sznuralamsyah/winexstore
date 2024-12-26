@@ -1,10 +1,10 @@
 :root {
-	--primary: #21130d;
-	--bg: #fbfcfa;
+	--primary: #000000;
+	--bg: #ffffff;
 }
 
 * {
-	font-family: 'Oswald', sans-serif;
+	font-family: 'Poppins', sans-serif;
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
@@ -20,7 +20,7 @@ body {
 
 .navigasi {
 	width: 100%;
-	height: 50px;
+	height: 70px;
 	background-color: var(--primary);
 	display: flex;
 	justify-content: space-between;
@@ -31,37 +31,45 @@ body {
 	left: 0;
 	right: 0;
 	z-index: 99;
-	/*
-	box-shadow: -1px 1px 1px 0px rgba(0,0,0,0.8);
-	-webkit-box-shadow: -1px 3px 6px 0px rgba(0,0,0,0.8);
-	-moz-box-shadow: -1px 3px 6px 0px rgba(0,0,0,0.8);
-	*/
+	box-shadow: -1px 1px 1px 0px rgba(0,0,0,0.5);
+	-webkit-box-shadow: -1px 3px 6px 0px rgba(0,0,0,0.5);
+	-moz-box-shadow: -1px 3px 6px 0px rgba(0,0,0,0.5);
+	
 }
 
 .navigasi .nav-kiri {
 	background-color: var(--primary);
 	width: 250px;
-	height: 36px;
+	height: 70px;
 	font-size: 20px;
+	display: flex; /* Gunakan flexbox */
+    align-items: center; /* Align vertikal ke tengah */
+    gap: 3px; /* Beri jarak antara gambar dan teks */
 }
 
 .nav-kiri img {
 	width: 50px;
 	height: 50px;
 	float: left;
+	object-fit: contain; /* Pastikan gambar tidak terdistorsi */
+    vertical-align: middle; /* Opsional, hanya untuk keamanan */
 }
 
 .navigasi .nav-kiri p {
-	font-style: oblique;
 	color: var(--bg);
+	font-size: 24px;
+	font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins */
+    font-weight: 600; /* Semibold */
+	font-style: italic;
 }
 
 .navigasi .nav-kanan {
 	width: 500px;
-	height: 36px;
+	height: 70px;
 	background-color: var(--primary);
 	display: flex;
 	justify-content: flex-end;
+	align-items: center;
 }
 
 .navigasi .nav-kanan a {
@@ -69,6 +77,8 @@ body {
 	font-size: 18px;
 	margin: 0 16px;
 	color: var(--bg);
+	font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins */
+    font-weight: 500;
 }
 
 .container {

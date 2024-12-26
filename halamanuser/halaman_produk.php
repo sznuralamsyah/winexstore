@@ -27,8 +27,8 @@ if (isset($_GET["kategori_id"])) {
 	<!-- Navigasi Start -->
 	<nav class="navigasi">
 		<div class="nav-kiri">
-			<img src="../img/micam.png">
-			<p>MiCAM</p>
+		<img src="../icons/icon-192.jpeg">
+			<p>WINEXSTORE</p>
 		</div>
 		<div class="nav-kanan">
 			<a href="../index.php">Dashboard</a>
@@ -51,7 +51,7 @@ if (isset($_GET["kategori_id"])) {
 			</div>
 		</div>
 		<div class="list-merek">
-			<a href="halaman_produk.php" class="<?= isset($_GET['kategori_id'])?:'active' ?>">semua produk</a>
+			<a href="halaman_produk.php" class="<?= isset($_GET['kategori_id'])?:'active' ?>">Semua Produk</a>
 			<?php foreach($kategori as $ktgr) : ?>
 				<a href="?kategori_id=<?php echo $ktgr["id"]; ?>" class="<?= isset($_GET['kategori_id']) && $_GET['kategori_id'] == $ktgr['id']?'active':'' ?>"><?php echo $ktgr["kategori"]; ?></a>
 			<?php endforeach; ?>
@@ -62,8 +62,8 @@ if (isset($_GET["kategori_id"])) {
 			<div class="card">
 				<img src="../<?php echo $row["gambar"]; ?>" alt="gambar pakaian" class="class-image-top">
 				<div class="card-body">
-					<h2 class="card-title"><?php echo $row["nama"];?> <?php echo $row["kategori"] ?></h2>
-					<ul>
+					<h2 class="card-title"><?php echo $row["nama"];?> <br> <?php echo $row["kategori"] ?></h2>
+					<ul class="spek-product">
 						<li>edisi : <?php echo $row["edisi"]; ?></li>
 						<li>harga : Rp.<?php echo $row["harga"]; ?></li>
 						<li>deskripsi produk : <br><?php echo nl2br($row["deskripsi"]); ?></li>
@@ -72,10 +72,9 @@ if (isset($_GET["kategori_id"])) {
 				<div class="order-icon">
 					<a class="card-action" href="whatsapp://send?text=<?= urlencode("Halo saya ingin pesan ".$row['nama'].' '.$row['edisi']) ?>&phone=+6281213566840" target="_blank">
 					<div class="pesan">
-						<img src="../img/whatsapp.png">
 						<p>Pesan Via WhatsApp</p>
 					</div>
-				</a>
+					</a>
 				</div>
 				
 			</div>
@@ -85,13 +84,13 @@ if (isset($_GET["kategori_id"])) {
 		<p>OUR SOCIAL MEDIA</p>
 		<div class="social">
 			<div class="instagram">
-				<a href="https://instagram.com/micam888.camera?igshid=MzNlNGNkZWQ4Mg=="><img src="../img/instagram.png"></a>
+				<a href="https://www.instagram.com/winex.store"><img src="../img/instagram.png"></a>
 			</div>
 			<div class="tiktok">
-				<a href="https://www.tiktok.com/@micam888camera?_t=8dGmxLdwReb&_r=1"><img src="../img/tik-tok.png"></a>
+				<a href="/"><img src="../img/tik-tok.png"></a>
 			</div>
 			<div class="youtube">
-				<a href="https://youtube.com/@micamera888"><img src="../img/youtube.png"></a>
+				<a href="/"><img src="../img/youtube.png"></a>
 			</div>
 		</div>
 	</footer>

@@ -14,8 +14,8 @@
 	<!-- Navigasi Start -->
 	<nav class="navigasi">
 		<div class="nav-kiri">
-			<img src="../img/micam.png">
-			<p>MiCAM</p>
+			<img src="../icons/icon-192.jpeg">
+			<p>WINEXSTORE</p>
 		</div>
 		<div class="nav-kanan">
 			<a href="../index.php">Dashboard</a>
@@ -33,9 +33,9 @@
 					<h1>Tentang Kami</h1>
 					<br>
 					<br>
-					<p>MiCAM merupakan sebuah website yang menyediakan layanan pembelian kamera digital dengan alur transaksi yang dapat menghubungkan langsung antara penjual dan pembeli. Disini tersedia barang baru dan bekas, namun jangan khawatir karena kami mengedepankan kualitas dan validitas.</p>
+					<p>Winexstore adalah sebuah website e-commerce yang menyediakan layanan pembelian pakaian dengan desain stylish dan berkualitas. Alur transaksi kami dirancang untuk memberikan kemudahan dan kenyamanan bagi pembeli, dengan memastikan pengalaman berbelanja yang aman dan terpercaya.</p>
 					<br>
-					<p>Memiliki banyak koleksi dan pembeli adalah tujuan kami di masa mendatang, menjadikan MiCAM sebagai tempat yang memudahkan banyak orang untuk menemukan camera yang cocok untuk mereka adalah poin penting kami lainnya. Kami berharap banyak orang dapat terbantu dengan adanya MiCAM.</p>
+					<p>Kami menyediakan berbagai macam koleksi pakaian, mulai dari yang kasual hingga formal, untuk pria dan wanita, sehingga pelanggan dapat menemukan produk yang sesuai dengan gaya mereka. Kualitas bahan dan desain menjadi prioritas utama kami agar pelanggan selalu merasa puas dengan pilihan mereka.</p>
 				</div>
 			</div>
 		</div>
@@ -44,13 +44,13 @@
 		<p>OUR SOCIAL MEDIA</p>
 		<div class="social">
 			<div class="instagram">
-				<a href="https://instagram.com/micam888.camera?igshid=MzNlNGNkZWQ4Mg=="><img src="../img/instagram.png"></a>
+				<a href="https://www.instagram.com/winex.store"><img src="../img/instagram.png"></a>
 			</div>
 			<div class="tiktok">
-				<a href="https://www.tiktok.com/@micam888camera?_t=8dGmxLdwReb&_r=1"><img src="../img/tik-tok.png"></a>
+				<a href="/"><img src="../img/tik-tok.png"></a>
 			</div>
 			<div class="youtube">
-				<a href="https://youtube.com/@micamera888"><img src="../img/youtube.png"></a>
+				<a href="/"><img src="../img/youtube.png"></a>
 			</div>
 		</div>
 	</footer>

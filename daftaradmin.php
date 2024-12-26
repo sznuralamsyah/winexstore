@@ -61,7 +61,7 @@ if (isset($_POST["register"])) {
 					<input type="password" name="password2" id="password2" placeholder="KONFIRMASI PASSWORD" required autocomplete="off">
 				</div>	
 			</div>
-			<button type="submit" name="register">Daftar Sekarang!</button>
+				<button type="submit" name="register">Daftar Sekarang!</button>
 		</form>
 	</div>
 </body>
